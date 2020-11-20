@@ -8,25 +8,12 @@ $database = "address_book";
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
 
-// Create database
-$sql = "CREATE TABLE people(
-id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-name VARCHAR(20) NOT NULL,
-lastname VARCHAR(20) NOT Null,
-telephone INT,
-email VARCHAR(100),
-address VARCHAR(100),
-meta TIMESTAMP
 
-)";
+// insert data into the table
+$sql = "INSERT INTO people(id ,name ,lastname ,telephone ,email ,address ) VALUES (NULL,'John','DOE',012334566,'john@doe.com','kasarani nairobi')";
 if ($conn->query($sql) === TRUE) {
-  echo "SQL query ok";
+  echo "New record created successfully";
 } else {
   echo "Error sql query: " . $conn->error;
 }
