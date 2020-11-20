@@ -12,6 +12,15 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
+
+// Create database
+$sql = "CREATE DATABASE address_book";
+if ($conn->query($sql) === TRUE) {
+  echo "Database created successfully";
+} else {
+  echo "Error creating database: " . $conn->error;
+}
+
 //close connection
 $conn->close();
 
