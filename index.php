@@ -11,43 +11,19 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 
 // prepare and bind to help insert multiple data repeatedly
-$stm = $conn->prepare("INSERT INTO people(name,lastname,telephone,email,address) VALUES (?,?,?,?,?)");
-//binid the parameters with the query
-$stm->bind_param("sssss",$name,$lastname,$telephone,$email,$address);
+$sql = "SELECT id, name, lastname FROM people";
+$result = $conn->query($sql);
 
-//set parameters and execute
-$name = "Kamahuha";
-$lastname = "Kamahuha";
-$telephone= 07123456;
-$email = "kamauhuha@gmail.com";
-$address = "runda nai";
-$stm->execute();
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"]. " - name: " . $row["name"]. " " . $row["lastname"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
 
-$name = "Kamahuha";
-$lastname = "Kamahuha";
-$telephone= 07123456;
-$email = "kamauhuha@gmail.com";
-$address = "runda nai";
-$stm->execute();
 
-$name = "Kamahuha";
-$lastname = "Kamahuha";
-$telephone= 07123456;
-$email = "kamauhuha@gmail.com";
-$address = "runda nai";
-$stm->execute();
-
-$name = "Kamahuha";
-$lastname = "Kamahuha";
-$telephone= 07123456;
-$email = "kamauhuha@gmail.com";
-$address = "runda nai";
-$stm->execute();
-
-echo "New records created successfully";
-//close execution
-$stm->close();
-//close connection
 $conn->close();
 
 ?>
