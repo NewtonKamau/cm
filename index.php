@@ -1,4 +1,5 @@
 <?php
+
 //config
 $servername = "localhost";
 $username = "root";
@@ -10,20 +11,30 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 
 
-// prepare and bind to help insert multiple data repeatedly
-$sql = "SELECT id, name, lastname FROM people";
-$result = $conn->query($sql);
+// fetch data by limit 
+$sql = "SELECT * FROM people LIMIT 10";
+$action = mysqli_query($conn,$sql);
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " - name: " . $row["name"]. " " . $row["lastname"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
+
+echo "<h1>Your contact List</h1>";
+echo "<table >";
+echo "<td>name</td>";
+echo "<td>lastname</td>";
+echo "<td>telephone</td>";
+echo "<td>email</td>";
+echo "<td>address</td>";
+
+
+while ( $line = mysqli_fetch_assoc($action)) {
+	echo "<tr><td>" .$line["name"] ."</td>
+	<td>" .$line["lastname"]. "</td>
+	 <td>" .$line["telephone"] ."</td>
+	<td>" .$line["email"]. "</td>
+	 <td>" .$line["address"]. "</tr>";
+} echo "</table>";
+
 
 
 $conn->close();
 
-?>
+?>	
