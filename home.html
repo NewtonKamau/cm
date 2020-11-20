@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact cms</title>
+</head>
+<body>
+	include 'navigation';
+
+	<h2>Please fill the contact details</h2>
+<form action="create_contact.php" method="post">
+
+	<label>Name</label><br>
+	<input type="text" name="name" required="true"><br>
+	<label>last name</label><br>
+	<input type="text" name="lastname" required="true"><br>
+	<label>Telephone</label><br>
+	<input type="number" name="telephone" required="true"><br>
+	<label>email</label><br>
+	<input type="email" name="email" required="true"><br>
+	<label>Address</label><br>
+	<input type="text" name="address" required="true"><br>
+	<input type="submit" name="submit">
+	</form>
+</body>
+</html>
