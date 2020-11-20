@@ -11,11 +11,12 @@ $conn = new mysqli($servername, $username, $password, $database);
 
 
 // insert data into the table
-$sql = "INSERT INTO people(id ,name ,lastname ,telephone ,email ,address ) VALUES (NULL,'John','DOE',012334566,'john@doe.com','kasarani nairobi')";
+$sql = "INSERT INTO people(id ,name ,lastname ,telephone ,email ,address ) VALUES (NULL,'Steve','NDOE',012334566,'steve@doe.com','mwiki nairobi')";
 if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+	$last_id = $conn->insert_id;
+  echo "New record created successfully. Last id is ". $last_id;
 } else {
-  echo "Error sql query: " . $conn->error;
+  echo "Error sql query: " .$sql. $conn->error;
 }
 
 //close connection
